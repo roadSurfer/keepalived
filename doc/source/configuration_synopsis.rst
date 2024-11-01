@@ -18,18 +18,20 @@ Global Definitions Synopsis
         **smtp_server** host
         **smtp_connect_timeout** num
         **router_id** string
+        **lvs_sync_daemon** string
     }
 
-========================    ======================================================  =========
-Keyword                     Definition                                              Type
-========================    ======================================================  =========
-global_defs                 identify the global def configuration block
-notification_email          email accounts that will receive the notification mail  List
-notification_email_from     email to use when processing “MAIL FROM:” SMTP command  List
-smtp_server remote SMTP     server to use for sending mail notifications            alphanum
-smtp_connect_timeout        specify a timeout for SMTP stream processing            numerical
-router_id                   specify the name of the LVS director                    string
-========================    ======================================================  =========
+======================== =============================================================== =========
+Keyword                     Definition                                                   Type
+======================== =============================================================== =========
+global_defs              identify the global def configuration block
+notification_email       email accounts that will receive the notification mail          List
+notification_email_from  email to use when processing “MAIL FROM:” SMTP command          List
+smtp_server remote SMTP  server to use for sending mail notifications                    alphanum
+smtp_connect_timeout     specify a timeout for SMTP stream processing                    numerical
+router_id                specify the name of the LVS director                            string
+lvs_sync_daemon          specify the network interface for the LVS sync_daemon to run on string
+======================== =============================================================== =========
 
 Email type: Is a string using charset as specified into the SMTP RFC eg: “user@domain.com”
 
@@ -137,7 +139,6 @@ VRRP Instance Definitions Synopsis
         **state** *MASTER|BACKUP*
         **interface** string
         **mcast_src_ip** @IP
-        **lvs_sync_daemon_interface** string
         **virtual_router_id** num
         **priority** num
         **advert_int** num
@@ -171,7 +172,6 @@ vrrp_instance               identify a VRRP instance definition block
 state                       specify the instance state in standard use
 Interface                   specify the network interface for the instance to run on                string
 mcast_src_ip                specify the src IP address value for VRRP adverts IP header
-lvs_sync_daemon_interface   specify the network interface for the LVS sync_daemon to run on         string
 virtual_router_id           specify to which VRRP router id the instance belongs                    numerical
 priority                    specify the instance priority in the VRRP router                        numerical
 advert_int                  specify the advertisement interval in seconds (set to 1)                numerical
